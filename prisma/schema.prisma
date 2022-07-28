@@ -15,7 +15,8 @@ model User {
   username String  @unique
   name  String
   password String
-  weapons Weapons[]  
+  weapons Weapons[]
+  deleted DateTime? 
 }
 
 model Weapons {
@@ -27,18 +28,20 @@ model Weapons {
   fabricDate DateTime
   rarity Rarity  @relation(fields: [rarityId], references: [id])
   rarityId Int
+  deleted DateTime?
 }
 
 model Rarity {
   id       Int      @default(autoincrement()) @id
   name      RarityName
   probability Float
-  weapons Weapons[]  
+  weapons Weapons[]
+  deleted DateTime?  
 }
 
 enum RarityName {
   common
   rare
-  epic
+  epic  
   legendary
 }
