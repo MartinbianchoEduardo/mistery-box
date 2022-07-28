@@ -37,16 +37,16 @@ export class RarityService {
     });
   }
 
-//   async updateUser(params: {
-//     where: Prisma.UserWhereUniqueInput;
-//     data: Prisma.UserUpdateInput;
-//   }): Promise<User> {
-//     const { where, data } = params;
-//     return this.prisma.user.update({
-//       data,
-//       where,
-//     });
-//   }
+  async updateRarity(params: {
+    where: Prisma.RarityWhereUniqueInput;
+    data: Prisma.RarityUpdateInput;
+  }): Promise<Rarity> {
+    const { where, data } = params;
+    return this.prisma.rarity.update({
+      data,
+      where,
+    });
+  }
 
   async deleteRarity(where: Prisma.RarityWhereUniqueInput): Promise<Rarity> {
     return this.prisma.rarity.delete({

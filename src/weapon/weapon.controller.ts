@@ -10,6 +10,7 @@ import {
 import { WeaponService } from './weapon.service';
 import { Weapons as WeaponModel } from '@prisma/client';
 import { createWeaponDTO } from './dto/createWeaponDTO';
+import { updateWeaponDto } from './dto/updateWeaponDto';
 
 @Controller('weapons')
 export class WeaponController {
@@ -30,13 +31,16 @@ export class WeaponController {
     return this.weaponService.findOne({ id: +id });
   }
 
-  //   @Patch(':id')
-  //   update(@Param('id') id: string, @Body() updateUserDto: UpdateUserDto) {
-  //     return this.userService.update(+id, updateUserDto);
-  //   }
+  @Patch(':id')
+  update(@Param('id') id: string, @Body() updateWeaponDto: updateWeaponDto) {
+    return this.weaponService.updateWeapon({
+      where: { id: +id },
+      data: updateWeaponDto,
+    });
+  }
 
-    @Delete(':id')
-    remove(@Param('id') id: string) {
-      return this.weaponService.deleteWeapon({id: +id});
-    }
+  @Delete(':id')
+  remove(@Param('id') id: string) {
+    return this.weaponService.deleteWeapon({ id: +id });
+  }
 }

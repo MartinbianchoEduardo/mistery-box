@@ -9,6 +9,7 @@ import {
 } from '@nestjs/common';
 import { RarityService } from './rarity.service';
 import { Prisma } from '@prisma/client';
+import { updateRarityDTO } from './dto/updateRarityDto';
 
 @Controller('rarity')
 export class RarityController {
@@ -29,10 +30,13 @@ export class RarityController {
     return this.rarityService.findOne({ id: +id });
   }
 
-  //   @Patch(':id')
-  //   update(@Param('id') id: string, @Body() updateUserDto: UpdateUserDto) {
-  //     return this.userService.update(+id, updateUserDto);
-  //   }
+  @Patch(':id')
+  update(@Param('id') id: string, @Body() updateRarityDto: updateRarityDTO) {
+    return this.rarityService.updateRarity({
+      where: { id: +id },
+      data: updateRarityDto,
+    });
+  }
 
     @Delete(':id')
     remove(@Param('id') id: string) {

@@ -38,16 +38,16 @@ export class WeaponService {
     });
   }
 
-//   async updateUser(params: {
-//     where: Prisma.UserWhereUniqueInput;
-//     data: Prisma.UserUpdateInput;
-//   }): Promise<User> {
-//     const { where, data } = params;
-//     return this.prisma.user.update({
-//       data,
-//       where,
-//     });
-//   }
+  async updateWeapon(params: {
+    where: Prisma.WeaponsWhereUniqueInput;
+    data: Prisma.WeaponsUpdateInput;
+  }): Promise<Weapons> {
+    const { where, data } = params;
+    return this.prisma.weapons.update({
+      data,
+      where,
+    });
+  }
 
   async deleteWeapon(where: Prisma.WeaponsWhereUniqueInput): Promise<Weapons> {
     return this.prisma.weapons.delete({
