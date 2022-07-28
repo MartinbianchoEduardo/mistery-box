@@ -49,9 +49,9 @@ export class WeaponService {
 //     });
 //   }
 
-//   async deleteUser(where: Prisma.UserWhereUniqueInput): Promise<User> {
-//     return this.prisma.user.delete({
-//       where,
-//     });
-//   }
+  async deleteWeapon(where: Prisma.WeaponsWhereUniqueInput): Promise<Weapons> {
+    return this.prisma.weapons.delete({
+      where,
+    });
+  }
 }

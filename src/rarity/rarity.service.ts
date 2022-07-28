@@ -48,9 +48,9 @@ export class RarityService {
 //     });
 //   }
 
-//   async deleteUser(where: Prisma.UserWhereUniqueInput): Promise<User> {
-//     return this.prisma.user.delete({
-//       where,
-//     });
-//   }
+  async deleteRarity(where: Prisma.RarityWhereUniqueInput): Promise<Rarity> {
+    return this.prisma.rarity.delete({
+      where,
+    });
+  }
 }

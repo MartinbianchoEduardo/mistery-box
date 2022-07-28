@@ -26,7 +26,7 @@ export class RarityController {
 
   @Get(':id')
   findOne(@Param('id') id: number) {
-    return this.rarityService.findOne({ id });
+    return this.rarityService.findOne({ id: +id });
   }
 
   //   @Patch(':id')
@@ -34,8 +34,8 @@ export class RarityController {
   //     return this.userService.update(+id, updateUserDto);
   //   }
 
-  //   @Delete(':id')
-  //   remove(@Param('id') id: string) {
-  //     return this.userService.remove(+id);
-  //   }
+    @Delete(':id')
+    remove(@Param('id') id: string) {
+      return this.rarityService.deleteRarity({id: +id});
+    }
 }
