@@ -9,6 +9,7 @@ import {
 } from '@nestjs/common';
 import { UserService } from './user.service';
 import { User as UserModel } from '@prisma/client';
+import { updateUserDto } from './dto/updateUserDto';
 
 @Controller('user')
 export class UserController {
@@ -25,17 +26,20 @@ export class UserController {
   }
 
   @Get(':id')
-  findOne(@Param('id') id: number) {
-    return this.userService.findOne({ id });
+  findOne(@Param('id') id: string) {
+    return this.userService.findOne({ id: +id });
   }
 
-  //   @Patch(':id')
-  //   update(@Param('id') id: string, @Body() updateUserDto: UpdateUserDto) {
-  //     return this.userService.update(+id, updateUserDto);
-  //   }
+    @Patch(':id')
+    update(@Param('id') id: string, @Body() updateUserDto: updateUserDto) {
+      return this.userService.updateUser({
+        where: { id: +id },
+        data: updateUserDto,
+      });
+    }
 
-  //   @Delete(':id')
-  //   remove(@Param('id') id: string) {
-  //     return this.userService.remove(+id);
-  //   }
+    @Delete(':id')
+    remove(@Param('id') id: string) {
+      return this.userService.deleteUser({id: +id});
+    }
 }
