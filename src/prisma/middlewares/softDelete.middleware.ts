@@ -46,9 +46,9 @@ export const softDeleteMiddleware = async (params, next) => {
   }
   if (params.action == 'updateMany') {
     if (params.args.where != undefined) {
-      params.args.where['deleted'] = false;
+      params.args.where['deleted'] = null;
     } else {
-      params.args['where'] = { deleted: false };
+      params.args['where'] = { deleted: null };
     }
   }
 
