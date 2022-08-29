@@ -18,6 +18,4 @@ export class AppController {
   getProfile(@Request() req) {
     return req.user;
   }
-  //não tenho certeza se está funcionando
-  //como faço uma chamada /profile? mandando o token na requisição? como?
 }
